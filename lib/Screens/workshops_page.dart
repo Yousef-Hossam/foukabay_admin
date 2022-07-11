@@ -348,7 +348,7 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                   ),
                   SizedBox(
                     height: 35,
-                    width: 150,
+                    width: 160,
                     child: ButtonTheme(
                         //minWidth: 200.0,
                         //   height:32.h,
