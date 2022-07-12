@@ -132,12 +132,12 @@ class _RegisteredUsersState extends State<RegisteredUsers>
                       : Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            height: MediaQuery.of(context).size.height * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.7,
                             //    color: Color(0xffE5E5E5),
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 4),
                               child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 4),
+                                padding: EdgeInsets.symmetric(vertical: 2),
                                 child: ListView.builder(
                                   itemBuilder: (context, index) {
                                     return cardWorkShopMobile(workShopProvider
@@ -244,26 +244,25 @@ class _RegisteredUsersState extends State<RegisteredUsers>
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: 10),
+              SizedBox(width: 5),
               Padding(
                   padding: const EdgeInsets.only(bottom: 6.0),
-                  child: Expanded(
-                      child: Text(
+                  child: Text(
                     customer.firstName != null
                         ? 'Name : ' + customer.firstName.toString()
                         : 'Name',
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                     maxLines: 1,
                     softWrap: true,
-                  ))),
+                  )),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text('Phone : ' + customer.mobileNumber.toString(),
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.w500)),
               ),

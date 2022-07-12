@@ -232,7 +232,7 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                     SizedBox(height: 20),
                     SizedBox(
                       height: 50,
-                      width: 210,
+                      width: 200,
                       child: ButtonTheme(
                         //minWidth: 200.0,
                         //   height:32.h,
@@ -241,7 +241,7 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                             side: const BorderSide(color: Color(0xFF71B3E3))),
                         child: RaisedButton(
                             color: Color(0xFF71B3E3),
-                            child: Text("Registered users",
+                            child: Text("Users",
                                 style: TextStyle(
                                     fontSize: 24,
                                     color: Colors.white,
@@ -347,8 +347,11 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                             fontWeight: FontWeight.w400)),
                   ),
                   SizedBox(
+                    height: 5,
+                  ),
+                  SizedBox(
                     height: 35,
-                    width: 160,
+                    width: 150,
                     child: ButtonTheme(
                         //minWidth: 200.0,
                         //   height:32.h,
@@ -357,7 +360,7 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                             side: const BorderSide(color: Color(0xFF71B3E3))),
                         child: RaisedButton(
                             color: Color(0xFF71B3E3),
-                            child: Text("Registered users",
+                            child: Text("Users",
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Colors.white,
