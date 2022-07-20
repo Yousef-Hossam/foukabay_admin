@@ -2,6 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:foukabay_admin/Models/events_model.dart';
 import 'package:foukabay_admin/Screens/RegisteredUsers.dart';
+import 'package:foukabay_admin/Screens/add_workshop.dart';
 import 'package:foukabay_admin/provider/workshop_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +47,24 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
           height: 70,
           fit: BoxFit.contain,
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.add,
+              ),
+              iconSize: 55,
+              color: Colors.white,
+              //  splashColor: Colors.purple,
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  AddWorkshopPage.route,
+                );
+              },
+            ),
+          ),
+        ],
 
         //  title: Text('fffff'),
       ),
@@ -81,6 +100,26 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
               //     fit: BoxFit.contain,
               //   ),
               // ),
+              // Padding(
+              //     padding: const EdgeInsets.only(top: 8.0),
+              //     child: SizedBox(
+              //       height: 35,
+              //       width: 150,
+              //       child: ButtonTheme(
+              //           //minWidth: 200.0,
+              //           //   height:32.h,
+              //           shape: RoundedRectangleBorder(
+              //               borderRadius: BorderRadius.circular(8.0),
+              //               side: const BorderSide(color: Color(0xFF71B3E3))),
+              //           child: RaisedButton(
+              //               color: Colors.white,
+              //               child: Text("Add workshop",
+              //                   style: TextStyle(
+              //                       fontSize: 18,
+              //                       color: Color(0xFF71B3E3),
+              //                       fontWeight: FontWeight.w500)),
+              //               onPressed: () async {})),
+              //     )),
               workShopProvider.listWorkshops.length != null &&
                       workShopProvider.listWorkshops.length > 0
                   ? w > 800
@@ -91,21 +130,15 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                             //   top: 40
                           ),
                           child: Container(
-                            height: MediaQuery.of(context).size.height * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.75,
                             width: MediaQuery.of(context).size.width * 0.6,
                             child: MediaQuery.removePadding(
                               removeTop: true,
-                              removeBottom: false,
+                              removeBottom: true,
                               context: context,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(vertical: 5),
                                 child: ListView.builder(
-                                  // gridDelegate:
-                                  //     SliverGridDelegateWithFixedCrossAxisCount(
-                                  //         crossAxisCount: w > 750 ? 1 : 1,
-                                  //         crossAxisSpacing: 5.0,
-                                  //         mainAxisSpacing: 5.0,
-                                  //         childAspectRatio: 3.8 / 2),
                                   itemBuilder: (context, index) {
                                     return Padding(
                                       padding: const EdgeInsets.only(top: 16.0),
@@ -127,28 +160,33 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                           padding: const EdgeInsets.only(
                               left: 8.0, right: 8.0, bottom: 8.0),
                           child: Container(
-                            height: MediaQuery.of(context).size.height * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.75,
                             //    color: Color(0xffE5E5E5),
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 2),
                               child: Padding(
                                 padding: EdgeInsets.symmetric(vertical: 4),
-                                child: ListView.builder(
-                                  itemBuilder: (context, index) {
-                                    return cardWorkShopMobile(
-                                        workShopProvider.listWorkshops[index]);
-                                  },
-                                  itemCount:
-                                      workShopProvider.listWorkshops.length,
-                                  scrollDirection: Axis.vertical,
-                                  primary: false,
-                                  shrinkWrap: true,
+                                child: MediaQuery.removePadding(
+                                  removeTop: true,
+                                  removeBottom: true,
+                                  context: context,
+                                  child: ListView.builder(
+                                    itemBuilder: (context, index) {
+                                      return cardWorkShopMobile(workShopProvider
+                                          .listWorkshops[index]);
+                                    },
+                                    itemCount:
+                                        workShopProvider.listWorkshops.length,
+                                    scrollDirection: Axis.vertical,
+                                    primary: false,
+                                    shrinkWrap: true,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         )
-                  : Container()
+                  : Container(),
             ],
           ),
         ),

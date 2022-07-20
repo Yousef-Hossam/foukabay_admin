@@ -157,11 +157,15 @@ class _RegisteredUsersState extends State<RegisteredUsers>
 
               Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    'Total registered to attend :  ${x}',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                child: Container(
+                  color: Colors.white,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      'Total registered to attend :  ${x}',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ),
               )

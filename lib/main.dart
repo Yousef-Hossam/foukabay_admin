@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foukabay_admin/Screens/RegisteredUsers.dart';
+import 'package:foukabay_admin/Screens/add_workshop.dart';
 import 'package:foukabay_admin/Screens/description_page.dart';
 import 'package:foukabay_admin/Screens/landing_page.dart';
 import 'package:foukabay_admin/Screens/register_page.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
           DescriptionPage.route: (context) => DescriptionPage(),
           RegisterPage.route: (context) => RegisterPage(),
           RegisteredUsers.route: (context) => RegisteredUsers(),
+          AddWorkshopPage.route: (context) => AddWorkshopPage()
         },
         title: 'Foukabay Admin',
         theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'AlrightSans'),

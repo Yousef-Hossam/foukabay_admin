@@ -64,4 +64,16 @@ class WorkShopProvider extends ChangeNotifier {
       throw error.toString();
     });
   }
+
+  Future adminWorkshopRegister(Events events) async {
+    return await workShopServices.adminAddWorkshop(events).then((value) async {
+      if (value.statusCode == 200) {
+        return value;
+      } else {
+        return 'Error';
+      }
+    }).catchError((error) {
+      throw error.toString();
+    });
+  }
 }

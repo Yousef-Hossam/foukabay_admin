@@ -20,6 +20,7 @@ class Events {
     this.maxAge,
     this.imageBase64,
     this.monthName,
+    this.location,
     this.available,
     this.datetime,
     this.durationHours,
@@ -34,6 +35,7 @@ class Events {
   int? maxAge;
   String? imageBase64;
   String? monthName;
+  String? location;
   bool? available;
   String? datetime;
   int? durationHours;
@@ -48,6 +50,7 @@ class Events {
         maxAge: json["maxAge"] == null ? null : json["maxAge"],
         imageBase64: json["imageBase64"] == null ? null : json["imageBase64"],
         monthName: json["monthName"] == null ? null : json["monthName"],
+        location: json["location"] == null ? null : json["location"],
         available: json["available"] == null ? null : json["available"],
         datetime: json["datetime"] == null ? null : json["datetime"],
         durationHours:
@@ -64,6 +67,7 @@ class Events {
         "maxAge": maxAge == null ? null : maxAge,
         "imageBase64": imageBase64 == null ? null : imageBase64,
         "monthName": monthName == null ? null : monthName,
+        "location": location == null ? null : location,
         "available": available == null ? null : available,
         "datetime": datetime == null ? null : datetime,
         "durationHours": durationHours == null ? null : durationHours,

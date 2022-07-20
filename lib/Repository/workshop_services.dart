@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:foukabay_admin/Models/events_model.dart';
 import 'package:foukabay_admin/Models/register_workshop.dart';
 import 'package:foukabay_admin/Network/urls.dart';
 
@@ -31,6 +32,15 @@ class WorkShopServices {
     try {
       return await _dio.post(ApiRoutes.postRegister,
           data: registerWorkshop.toMap());
+      //return ScannedNetworksResponse.fromJson(jsonDecode(response.data));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Response> adminAddWorkshop(Events events) async {
+    try {
+      return await _dio.post(ApiRoutes.postWorkshop, data: events.toMap());
       //return ScannedNetworksResponse.fromJson(jsonDecode(response.data));
     } catch (e) {
       rethrow;
