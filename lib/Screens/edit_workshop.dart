@@ -7,19 +7,20 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class AddWorkshopPage extends StatefulWidget {
-  static const String route = '/addworkshop';
+class EditWorkshopPage extends StatefulWidget {
+  static const String route = '/editworkshop';
 
-  const AddWorkshopPage({Key? key}) : super(key: key);
+  const EditWorkshopPage({Key? key}) : super(key: key);
 
   @override
-  State<AddWorkshopPage> createState() => _AddWorkshopPageState();
+  State<EditWorkshopPage> createState() => _EditWorkshopPageState();
 }
 
-class _AddWorkshopPageState extends State<AddWorkshopPage>
+class _EditWorkshopPageState extends State<EditWorkshopPage>
     with AfterLayoutMixin {
   late WorkShopProvider workShopProvider;
   final _formKey = GlobalKey<FormState>();
+  DateFormat dateFormat = new DateFormat('dd-MM-yyyy hh:mm a');
   String? dropdownValue;
   TextEditingController wname = new TextEditingController();
   TextEditingController wdesc = new TextEditingController();
@@ -29,8 +30,15 @@ class _AddWorkshopPageState extends State<AddWorkshopPage>
   TextEditingController wmax = new TextEditingController();
   TextEditingController dateinput = new TextEditingController();
   TextEditingController timeinput = new TextEditingController();
+
   // Events EventRegister = new Events();
   bool isLoading = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +121,7 @@ class _AddWorkshopPageState extends State<AddWorkshopPage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Add New Workshop!',
+                        'Edit WorkShop!',
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w700),
                       ),
@@ -508,7 +516,7 @@ class _AddWorkshopPageState extends State<AddWorkshopPage>
                                             color: Color(0xFF1A7741))),
                                     child: RaisedButton(
                                         color: Color(0xFF27AE60),
-                                        child: Text("Add Workshop",
+                                        child: Text("Edit Workshop",
                                             style: TextStyle(
                                                 fontSize: 24,
                                                 color: Colors.white,
@@ -521,7 +529,7 @@ class _AddWorkshopPageState extends State<AddWorkshopPage>
                                               .validate()) {
                                             FocusScope.of(context).unfocus();
                                             await workShopProvider
-                                                .adminWorkshopRegister(Events(
+                                                .adminEditWorkshop(Events(
                                                     available: true,
                                                     description: wdesc.text,
                                                     eventName: wname.text,
@@ -542,6 +550,8 @@ class _AddWorkshopPageState extends State<AddWorkshopPage>
                                                     imageBase64: '',
                                                     noOfSeats:
                                                         int.parse(wseats.text),
+                                                    id: workShopProvider
+                                                        .events.id,
                                                     location: 'Workshop Area'))
                                                 .then((value) {
                                               // Navigator.pop(context);
@@ -603,7 +613,7 @@ class _AddWorkshopPageState extends State<AddWorkshopPage>
                                                                         child:
                                                                             Text(
                                                                           // value.toString() ==
-                                                                          "  Thank you for Add Workshop.",
+                                                                          "  The Workshop successfully Edited.",
                                                                           //  : "Failed to register",
                                                                           style: TextStyle(
                                                                               fontSize: 18,
@@ -707,7 +717,23 @@ class _AddWorkshopPageState extends State<AddWorkshopPage>
   void afterFirstLayout(BuildContext context) {
     workShopProvider = Provider.of<WorkShopProvider>(context, listen: false);
     //  workShopProvider.getAllEvents();
-
+    wname.text = workShopProvider.events.eventName.toString();
+    wmin.text = workShopProvider.events.minAge.toString();
+    wmax.text = workShopProvider.events.maxAge.toString();
+    dropdownValue = workShopProvider.events.monthName;
+    wdesc.text = workShopProvider.events.description.toString();
+    wseats.text = workShopProvider.events.noOfSeats.toString();
+    wduration.text = workShopProvider.events.durationHours.toString();
+    dateinput.text = DateFormat("dd").format(
+            dateFormat.parse(workShopProvider.events.datetime.toString())) +
+        "-" +
+        DateFormat("MM").format(
+            dateFormat.parse(workShopProvider.events.datetime.toString())) +
+        "-" +
+        DateFormat("yyyy").format(
+            dateFormat.parse(workShopProvider.events.datetime.toString()));
+    timeinput.text = DateFormat.jm()
+        .format(dateFormat.parse(workShopProvider.events.datetime.toString()));
     setState(() {});
   }
 }

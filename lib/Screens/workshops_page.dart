@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foukabay_admin/Models/events_model.dart';
 import 'package:foukabay_admin/Screens/RegisteredUsers.dart';
 import 'package:foukabay_admin/Screens/add_workshop.dart';
+import 'package:foukabay_admin/Screens/edit_workshop.dart';
 import 'package:foukabay_admin/provider/workshop_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -238,11 +239,20 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                               maxLines: 2,
                               softWrap: true),
                         ),
-                        Text('Workshop',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400))
+                        IconButton(
+                          icon: Icon(
+                            Icons.edit_outlined,
+                          ),
+                          iconSize: 75,
+                          color: Color(0xff71B3E3),
+                          //  splashColor: Colors.purple,
+                          onPressed: () async {
+                            await workShopProvider
+                                .setSelectedEvent(workShopModel);
+                            Navigator.of(context)
+                                .pushNamed(EditWorkshopPage.route);
+                          },
+                        ),
                       ],
                     ),
                     SizedBox(height: 10),
@@ -352,11 +362,20 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                               softWrap: true,
                             )),
                             const SizedBox(width: 5),
-                            Text('Workshop',
-                                style: TextStyle(
-                                    fontSize: 8,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400))
+                            IconButton(
+                              icon: Icon(
+                                Icons.edit_outlined,
+                              ),
+                              iconSize: 50,
+                              color: Color(0xff71B3E3),
+                              //  splashColor: Colors.purple,
+                              onPressed: () async {
+                                await workShopProvider
+                                    .setSelectedEvent(workShopModel);
+                                Navigator.of(context)
+                                    .pushNamed(EditWorkshopPage.route);
+                              },
+                            ),
                           ])),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 6.0),

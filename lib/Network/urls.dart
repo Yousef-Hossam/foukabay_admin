@@ -7,6 +7,8 @@ class ApiRoutes {
 
   static const postRegister = "${baseUrl}customer";
 
+  static const EdirWorkshop = "${baseUrl}event";
+
   static const getCustomersByEventId =
       "${baseUrl}event/getEventCustomers?eventId={eventid}";
 }

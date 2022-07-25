@@ -70,7 +70,7 @@ class _LandingPageState extends State<LandingPage> {
                                       ),
                                       Condition.largerThan(
                                         name: TABLET,
-                                        value: 40.0,
+                                        value: 30.0,
                                       )
                                     ],
                                   ).value,

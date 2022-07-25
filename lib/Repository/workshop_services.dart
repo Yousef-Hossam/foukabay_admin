@@ -46,4 +46,13 @@ class WorkShopServices {
       rethrow;
     }
   }
+
+  Future<Response> adminEditWorkshop(Events events) async {
+    try {
+      return await _dio.put(ApiRoutes.EdirWorkshop, data: events.toMap());
+      //return ScannedNetworksResponse.fromJson(jsonDecode(response.data));
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
