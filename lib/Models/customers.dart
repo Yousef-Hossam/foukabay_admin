@@ -1,12 +1,48 @@
-class Customers {
-  Customers(
-      {this.firstName,
-      this.lastName,
-      this.mobileNumber,
-      this.unitNumber,
-      this.email,
-      this.noOfAttendancies,
-      this.id});
+// To parse this JSON data, do
+//
+//     final registerWorkshop = registerWorkshopFromMap(jsonString);
+
+import 'dart:convert';
+
+RegisterUsersWorkshop registerWorkshopFromMap(String str) =>
+    RegisterUsersWorkshop.fromMap(json.decode(str));
+
+String registerWorkshopToMap(RegisterUsersWorkshop data) =>
+    json.encode(data.toMap());
+
+class RegisterUsersWorkshop {
+  RegisterUsersWorkshop({this.customer, this.eventId, this.eventBatchId});
+
+  Customer? customer;
+  int? eventId;
+  int? eventBatchId;
+
+  factory RegisterUsersWorkshop.fromMap(Map<String, dynamic> json) =>
+      RegisterUsersWorkshop(
+        customer: json["customer"] == null
+            ? null
+            : Customer.fromMap(json["customer"]),
+        eventId: json["EventId"] == null ? null : json["EventId"],
+        eventBatchId:
+            json["EventBatchId"] == null ? null : json["EventBatchId"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "customer": customer == null ? null : customer!.toMap(),
+        "EventId": eventId == null ? null : eventId,
+        "EventBatchId": eventBatchId == null ? null : eventBatchId,
+      };
+}
+
+class Customer {
+  Customer({
+    this.firstName,
+    this.lastName,
+    this.mobileNumber,
+    this.unitNumber,
+    this.email,
+    this.noOfAttendancies,
+  });
 
   String? firstName;
   String? lastName;
@@ -14,9 +50,8 @@ class Customers {
   String? unitNumber;
   String? email;
   int? noOfAttendancies;
-  int? id;
 
-  factory Customers.fromMap(Map<String, dynamic> json) => Customers(
+  factory Customer.fromMap(Map<String, dynamic> json) => Customer(
         firstName: json["firstName"] == null ? null : json["firstName"],
         lastName: json["lastName"] == null ? null : json["lastName"],
         mobileNumber:
@@ -25,7 +60,6 @@ class Customers {
         email: json["email"] == null ? null : json["email"],
         noOfAttendancies:
             json["noOfAttendancies"] == null ? null : json["noOfAttendancies"],
-        id: json["id"] == null ? null : json["id"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -35,6 +69,5 @@ class Customers {
         "unitNumber": unitNumber == null ? null : unitNumber,
         "email": email == null ? null : email,
         "noOfAttendancies": noOfAttendancies == null ? null : noOfAttendancies,
-        "id": id == null ? null : id,
       };
 }

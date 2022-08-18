@@ -243,7 +243,7 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                           icon: Icon(
                             Icons.edit_outlined,
                           ),
-                          iconSize: 75,
+                          iconSize: 65,
                           color: Color(0xff71B3E3),
                           //  splashColor: Colors.purple,
                           onPressed: () async {
@@ -366,7 +366,7 @@ class _WorkShopsState extends State<WorkShops> with AfterLayoutMixin {
                               icon: Icon(
                                 Icons.edit_outlined,
                               ),
-                              iconSize: 50,
+                              iconSize: 40,
                               color: Color(0xff71B3E3),
                               //  splashColor: Colors.purple,
                               onPressed: () async {

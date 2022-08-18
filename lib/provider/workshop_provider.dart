@@ -4,21 +4,27 @@ import 'package:foukabay_admin/Models/events_model.dart';
 import 'package:foukabay_admin/Models/register_workshop.dart';
 import 'package:foukabay_admin/Network/get_dio.dart';
 import 'package:foukabay_admin/Repository/workshop_services.dart';
+import 'package:intl/intl.dart';
 
 class WorkShopProvider extends ChangeNotifier {
   WorkShopServices workShopServices = new WorkShopServices(GetDio().getDio());
 
   List<Events> listWorkshops = [];
-  List<Customers> listRegisteredCustomers = [];
+  List<RegisterUsersWorkshop> listRegisteredCustomers = [];
   late Events events;
+  DateFormat dateFormat = new DateFormat('dd-MM-yyyy hh:mm a');
 
   Future getAllEvents() async {
     return await workShopServices.getWorkShops().then((value) async {
       if (value.statusCode == 200) {
         listWorkshops =
             List<Events>.from(value.data.map((x) => Events.fromMap(x)));
-        listWorkshops.sort((a, b) => a.datetime!.compareTo(b.datetime!));
+        listWorkshops.sort((a, b) => b.datetime!.compareTo(a.datetime!));
+        // listWorkshops.reversed.toList();
+        // listWorkshops.sort((a, b) =>
+        //   listWorkshops.sortReversed();
         //  listRegisteredCustomers.removeWhere((element) => false)
+
         notifyListeners();
         return listWorkshops;
       } else {
@@ -34,8 +40,8 @@ class WorkShopProvider extends ChangeNotifier {
         .getCustomersRegistered(events.id!)
         .then((value) async {
       if (value.statusCode == 200) {
-        listRegisteredCustomers =
-            List<Customers>.from(value.data.map((x) => Customers.fromMap(x)));
+        listRegisteredCustomers = List<RegisterUsersWorkshop>.from(
+            value.data.map((x) => RegisterUsersWorkshop.fromMap(x)));
         notifyListeners();
         return listRegisteredCustomers;
       } else {

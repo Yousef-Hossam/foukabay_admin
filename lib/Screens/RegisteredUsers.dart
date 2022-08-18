@@ -33,7 +33,10 @@ class _RegisteredUsersState extends State<RegisteredUsers>
     print(
         "length" + workShopProvider.listRegisteredCustomers.length.toString());
     for (int i = 0; i < workShopProvider.listRegisteredCustomers.length; i++) {
-      x = x + workShopProvider.listRegisteredCustomers[i].noOfAttendancies!;
+      x = x +
+          workShopProvider
+              .listRegisteredCustomers[i].customer!.noOfAttendancies!
+              .toInt();
     }
 
     // workShopProvider.getAllEvents();
@@ -176,7 +179,7 @@ class _RegisteredUsersState extends State<RegisteredUsers>
     );
   }
 
-  Widget cardworkShop(Customers customer) {
+  Widget cardworkShop(RegisterUsersWorkshop customer) {
     double wd = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
@@ -194,33 +197,35 @@ class _RegisteredUsersState extends State<RegisteredUsers>
             children: [
               SizedBox(width: 20),
               Text(
-                  customer.firstName != null
-                      ? 'Name : ' + customer.firstName.toString()
+                  customer.customer!.firstName != null
+                      ? 'Name : ' + customer.customer!.firstName.toString()
                       : 'Name ',
                   style: TextStyle(
                       fontSize: 26,
                       color: Colors.black,
                       fontWeight: FontWeight.w700)),
               SizedBox(height: 10),
-              Text('Phone : ' + customer.mobileNumber.toString(),
+              Text('Phone : ' + customer.customer!.mobileNumber.toString(),
                   style: TextStyle(
                       fontSize: 26,
                       color: Colors.black,
                       fontWeight: FontWeight.w400)),
               SizedBox(height: 10),
-              Text('No. of atte : ' + customer.noOfAttendancies.toString(),
+              Text(
+                  'No. of atte : ' +
+                      customer.customer!.noOfAttendancies.toString(),
                   style: TextStyle(
                       fontSize: 24,
                       color: Colors.black,
                       fontWeight: FontWeight.w400)),
               SizedBox(height: 10),
-              Text('Unit num : ' + customer.unitNumber.toString(),
+              Text('Unit num : ' + customer.customer!.unitNumber.toString(),
                   style: TextStyle(
                       fontSize: 24,
                       color: Colors.black,
                       fontWeight: FontWeight.w400)),
               SizedBox(height: 10),
-              Text('Email : ' + customer.email.toString(),
+              Text('Email : ' + customer.customer!.email.toString(),
                   style: TextStyle(
                       fontSize: 24,
                       color: Colors.black,
@@ -232,7 +237,7 @@ class _RegisteredUsersState extends State<RegisteredUsers>
     );
   }
 
-  Widget cardWorkShopMobile(Customers customer) {
+  Widget cardWorkShopMobile(RegisterUsersWorkshop customer) {
     double wd = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
@@ -252,8 +257,8 @@ class _RegisteredUsersState extends State<RegisteredUsers>
               Padding(
                   padding: const EdgeInsets.only(bottom: 6.0),
                   child: Text(
-                    customer.firstName != null
-                        ? 'Name : ' + customer.firstName.toString()
+                    customer.customer!.firstName != null
+                        ? 'Name : ' + customer.customer!.firstName.toString()
                         : 'Name',
                     style: TextStyle(
                         fontSize: 18,
@@ -264,7 +269,8 @@ class _RegisteredUsersState extends State<RegisteredUsers>
                   )),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
-                child: Text('Phone : ' + customer.mobileNumber.toString(),
+                child: Text(
+                    'Phone : ' + customer.customer!.mobileNumber.toString(),
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -273,7 +279,8 @@ class _RegisteredUsersState extends State<RegisteredUsers>
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
-                    'No. of atte : ' + customer.noOfAttendancies.toString(),
+                    'No. of atte : ' +
+                        customer.customer!.noOfAttendancies.toString(),
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -281,7 +288,8 @@ class _RegisteredUsersState extends State<RegisteredUsers>
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
-                child: Text('Unit  : ' + customer.unitNumber.toString(),
+                child: Text(
+                    'Unit  : ' + customer.customer!.unitNumber.toString(),
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -289,7 +297,7 @@ class _RegisteredUsersState extends State<RegisteredUsers>
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
-                child: Text('Email : ' + customer.email.toString(),
+                child: Text('Email : ' + customer.customer!.email.toString(),
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
